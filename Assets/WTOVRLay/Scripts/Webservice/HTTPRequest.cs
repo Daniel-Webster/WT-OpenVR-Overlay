@@ -23,7 +23,7 @@ public class HTTPRequest
             
             if (webRequest.isNetworkError)
             {
-                Debug.LogError(uri + ": Error: " + webRequest.error);
+                WTLogger.LogInfo(uri + ": Error: " + webRequest.error);
             }
             else
             {
@@ -46,14 +46,12 @@ public class HTTPRequest
             
             if (webRequest.error != null || webRequest.isNetworkError)
             {
-                Debug.LogError(uri + ": Error: " + webRequest.error);
+                WTLogger.LogInfo(uri + ": Error: " + webRequest.error);
             }
             else
             {
-                Debug.Log("Got image successfully");
+                WTLogger.LogInfo("Got image successfully");
                 Texture2D myTexture = ((DownloadHandlerTexture)webRequest.downloadHandler).texture;
-                Debug.Log(myTexture);
-                Debug.Log(webRequest.downloadHandler.data[3550]);
                 callback(myTexture, webRequest.downloadHandler.data);
             }
         }
